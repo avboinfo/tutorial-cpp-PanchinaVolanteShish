@@ -1,7 +1,7 @@
 /*
 * Legge da un file di input un vettore di stringhe
 * e produce un file di output con il vettore ordinato
-* Sandro Gallo - 5/2/2024
+* Enrico Salvioli - 5/2/2024
 */
 
 #include <iostream>
@@ -90,13 +90,23 @@ int main()
 
     stampaVettore(vs, n);
     numeroScambi=0;
-    cout<<"Vuoi che ti riordini il vettore con quickSort(se si scrivi qs) o con bubbleSoft(se si scrivi bS)";
-    int ris;
-    if(ris==qs)
-    //quickSort(vs,0,n-1);
-    numeroScambi=bubbleSort(vs,n);
-    cout << "Eseguiti " << numeroScambi << " scambi." << endl;
-    stampaVettore(vs, n);
-
+    cout<<"Vuoi che ti riordini il vettore con quickSort(se si scrivi qs) o con bubbleSoft(se si scrivi bs)";
+   string ris;
+   cout<<"\n";
+    cin>>ris;
+    if(ris=="qs")
+    {
+        quickSort(vs,0,n-1);
+        int x=partition[vs,0,10,string];
+        cout << "Eseguiti " << x << " scambi." << endl;
+         stampaVettore(vs, n);
+    }
+    else
+    {
+        numeroScambi=bubbleSort(vs,n);
+        cout << "Eseguiti " << numeroScambi << " scambi." << endl;
+        stampaVettore(vs, n);
+    }
+   
     return 0;
 }
