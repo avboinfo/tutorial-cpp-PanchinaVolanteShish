@@ -13,7 +13,10 @@ public:
         {
             for (int j = 0; j < 3; j++)
             {
+                
+                
                 griglia[i][j] = 0;
+                
             }
         }
     }
@@ -21,13 +24,22 @@ public:
     void stampa_griglia()
     {
         for (int i = 0; i < 3; i++)
-        {
+        {       
+              cout<<"-------------------------"<<endl;
+              
             for (int j = 0; j < 3; j++)
             {
+                cout<<"|";
+              
                 cout << griglia[i][j] << "\t";
+                
             }
+            cout<<"|"<<"\t";
+            
             cout << endl;
+
         }
+        cout<<"-------------------------"<<endl;
     }
 
     bool giocatore_uno(int x, int y)
@@ -40,7 +52,6 @@ public:
 
         if (griglia[x][y] == 1 || griglia[x][y] == 2)
             return false;
-
         griglia[x][y] = 1;
         return true;
     }
