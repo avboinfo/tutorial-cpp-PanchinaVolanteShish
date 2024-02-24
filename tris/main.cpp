@@ -73,8 +73,9 @@ public:
             if (risultato != 0)
                 return risultato;
         }
+            risultato = controlla_diagonali();
+                return risultato;
     }
-
 private:
     int controlla_collonna(int col)
     {
@@ -122,7 +123,24 @@ private:
         int acc_due = 0;
         for (int i = 0; i < 3; i++)
         {
-            int cella = griglia[i][i]; // unica differenza con il metono precedente
+            int cella = griglia[i][i]; // Diagonale da [0][0] a [2][2]
+            if (cella == 1)
+                acc_uno++;
+            else if (cella == 2)
+                acc_due++;
+          
+        }
+        
+        if (acc_uno == 3)
+            return 1;
+        if (acc_due == 3)
+            return 2;
+        
+        acc_uno = 0;
+        acc_due = 0;
+          for (int i = 0; i < 3; i++)
+        {
+            int cella = griglia[i][2-i]; 
             if (cella == 1)
                 acc_uno++;
             else if (cella == 2)
@@ -152,7 +170,8 @@ int main(int argc, char const *argv[])
     int vincitore;
     int mosse_totali = 0;
 
-    while (mosse_totali < 9) // @TODO: controllare se funziona anche nel caso di parità
+    while (mosse_totali < 9)
+     // @TODO: controllare se funziona anche nel caso di parità
     {
         do
         {
@@ -163,13 +182,18 @@ int main(int argc, char const *argv[])
             cout << "y: ";
             cin >> y;
 
-            mossa_valida = myTris.giocatore_uno(x, y); // @TODO: x e y sono invertiti
+            mossa_valida = myTris.giocatore_uno(y, x); // @TODO: x e y sono invertiti
+            mosse_totali++;
+           
         } while (!mossa_valida);
 
         myTris.stampa_griglia();
+        mosse_totali++;
+           if(mosse_totali>= 9)
+            break;
 
         vincitore = myTris.controlla_vincitore();
-        mosse_totali = mosse_totali + 1;
+        
         if(vincitore != 0)
             break;
             
@@ -183,15 +207,18 @@ int main(int argc, char const *argv[])
             cout << "y: ";
             cin >> y;
 
-            mossa_valida = myTris.giocatore_due(x, y); // @TODO: x e y sono invertiti
+            mossa_valida = myTris.giocatore_due(y, x); // @TODO: x e y sono invertiti
+            mosse_totali++;
+          
         } while (!mossa_valida);
 
         myTris.stampa_griglia();
 
         vincitore = myTris.controlla_vincitore();
-        mosse_totali = mosse_totali + 1;
+       
         if(vincitore != 0)
             break;
+        mosse_totali++;
 
             
     }
