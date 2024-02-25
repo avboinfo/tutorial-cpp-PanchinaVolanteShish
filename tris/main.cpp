@@ -16,6 +16,7 @@ public:
                 
                 
                 griglia[i][j] = 0;
+
                 
             }
         }
@@ -30,8 +31,12 @@ public:
             for (int j = 0; j < 3; j++)
             {
                 cout<<"|";
-              
-                cout << griglia[i][j] << "\t";
+              if(griglia[i][j]==0)
+                cout<< "."<<"\t";
+              if(griglia[i][j]==1)
+                cout << "X" << "\t";
+              if(griglia[i][j]==2)
+                cout<<"O"<<"\t";
                 
             }
             cout<<"|"<<"\t";
@@ -194,7 +199,7 @@ int main(int argc, char const *argv[])
             cin >> y;
 
             mossa_valida = myTris.giocatore_uno(y, x); // @TODO: x e y sono invertiti
-            mosse_totali++;
+            
            
         } while (!mossa_valida);
 
@@ -219,7 +224,7 @@ int main(int argc, char const *argv[])
             cin >> y;
 
             mossa_valida = myTris.giocatore_due(y, x); // @TODO: x e y sono invertiti
-            mosse_totali++;
+            
           
         } while (!mossa_valida);
 
