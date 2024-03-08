@@ -2,6 +2,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+
 class masterMind
 {
 private:
@@ -35,7 +36,7 @@ private:
 
     void generaCodicesegreto()
     {
-        srand(time)(NULL);
+        srand(time)(NULL));
         for (int i = 0; i < DIM; i++)
         {
             codiceSegreto[i] = rand() % 10;
@@ -63,15 +64,23 @@ public:
     }
     void riultatoMossa()
     {
-        int strike;
-        int ball;
+        int strike = 0;
+        int ball = 0;
         for (int i = 0; i < DIM; i++)
         {
             if (codiceSegreto[i] == mossaValida[i])
             {
-                strike++; //num e pos vorretti
+                strike++;
+                cout<<"Hai preso "<<strike<<"strike";
             }
-            else if()
+            if (codiceSegreto[i] == mossaValida[1] || codiceSegreto[i] == mossaValida[2] || codiceSegreto[i] == mossaValida[3] || codiceSegreto[i] == mossaValida[4])
+            {
+                ball++;
+                cout<<"Hai preso "<<ball<<"ball";
+            }
+            else
+            cout<<"Hai mancato tutto riprova"endl;
+            
         }
     }
 };
