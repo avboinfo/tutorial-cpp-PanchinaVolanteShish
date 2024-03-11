@@ -1,26 +1,26 @@
 /*
-Lezione del 04/03/2024
+Lezione del 11/03/2024
 Enrico Salvioli-Classe vettore di interi
-3CIN
+3CIN-Pila.cpp
 */
 #include <iostream>
 using namespace std;
 
-class Vettore{
+class Pila{
     private: // modificatori di visibilità, Information hiding(incapsulamento), una delle 3 caratteristiche principali delle classi 
     int dim;
     int len;
     int *v;
     int delta;
     public:
-     Vettore(int dim, int delta){
+     Pila(int dim, int delta){
         this->dim= dim;
         this->delta=delta;
         len = 0;
         v = new int[dim];
     }
 
-    void add(int n){
+    void push(int n){
         if(len==dim)
         {
             int*nuovov= new int[dim + delta];
@@ -37,6 +37,10 @@ class Vettore{
         len++;
 
     }
+    int pop(){
+        if (len==0){ cout<<"\nErrore Pila Vuota "; return 0;}
+        return v[--len];
+    }
     int getElement(int index){
         
         
@@ -48,7 +52,7 @@ class Vettore{
     }
 
     void print(){
-        cout<<"Contenuto del vettore"<<endl;
+        cout<<"Contenuto della pila"<<endl;
         for(int i=0;i<len;i++)
         
         {
@@ -62,10 +66,16 @@ class Vettore{
 
 int main(int argc, char const *argv[])
 {
-    Vettore vett(10,2);
-    for (int i=0; i<100;i++) vett.add(i);
+    Pila vett(10,2);
+
+    for (int i=0; i<100;i++) vett.push(i);
+    cout<<"Il valore che hai cambiato alla posizione "<<vett.getElement(10);
     vett.setElement(10,333);
-    cout<<"Il valore che hai cambiato alla posizione<<  è "<<vett.getElement(10)<<endl;
+    cout<<" è "<<vett.getElement(10)<<endl;
     vett.print();
+    cout<<"Numeri della pila al contrario"<<endl;
+    for (int i=0; i<110;i++){
+        cout<<vett.pop()<<" ";
+    }
     return 0;
 }
