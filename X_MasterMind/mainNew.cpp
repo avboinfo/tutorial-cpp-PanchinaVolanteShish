@@ -5,16 +5,27 @@
 */
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include "masterMind.cpp"
-int main()
+#include "mastermind.cpp"
+using namespace std;
+
+int main(int argc, char const *argv[])
 {
+    mastermind prova = mastermind();
     
-    masterMind prova = masterMind();
-    prova.nuovaGiocata();
-    void generaCodicesegreto();
-    void riultatoMossa();
+    cout << "Benvenuto al gioco mastermind!" << endl;
+
+    prova.nuova_giocata();
+    prova.risultato_mossa_bis();
+
+    
+    do{
+        prova.nuova_giocata();
+        prova.risultato_mossa();
+    }while (prova.puoi_continuare());
+    
+    prova.situazione_finale();
+
+    
 
     return 0;
 }
