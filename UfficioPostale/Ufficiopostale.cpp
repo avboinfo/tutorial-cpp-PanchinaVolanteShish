@@ -8,11 +8,20 @@
 using namespace std;
 class ufficioPostale{
     public:
-    char ris;
     int codiceCliente;
-    void nuovoCliente()
+    nuovoCliente(char s,int cod)    
     {
-        cout<<"C'è un nuovo cliente"
+        servizio=s;
+        codiceCliente=cod;
+    }       
+    void servizioRichiesto()
+    {
+        if(servizio=="R")  ricezione();
+        if(servizio=="S")  spedizione();
+        if(servizio=="F")  finanziario();
+    }
+    void ricezione(){
+        cout<<"Il cliente "<<cod<<"ha usato ricezione può andare"
     }
 
 };
