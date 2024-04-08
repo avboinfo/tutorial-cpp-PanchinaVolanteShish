@@ -6,6 +6,7 @@
 
 #include <iostream>
 using namespace std;
+#include <string>
 
 class   Coda{
     private: // modificatori di visibilità, Information hiding(incapsulamento), una delle 3 caratteristiche principali delle classi 
@@ -13,8 +14,10 @@ class   Coda{
     int *v;
     int start;
     int stop;
+    string nome;
     public:
-     Coda(int len){
+     Coda(int len,string name){
+        this->name=name
         this->len= len;
         v = new int[len];
         start = stop = 0;
@@ -24,23 +27,26 @@ class   Coda{
     void enter(int val){
         if(stop>=len){cout<<"Coda piena!";return;}
          v[stop] = val;
+         cout<<"Entra il numero "<<val<<endl;
          stop++;
     }
 
     int exit(){
         if(start>=stop){
-            cout<<"Coda vuota";return 0;
+            cout<<"Coda vuota"<<endl;return 0;
             
         }
         int val=v[start];
+        cout<<"Esce il numero "<<val<<endl;
         start=start++;
         return val;
     }
     void stampa(){
+        cout<<"Elementi in coda "<< name <<": ";
         for(int i=0; i<stop;i++){
-            cout<<"Elementi in coda:"<<endl;
             cout<<v[i]<<endl;
-            cout<<"--------------"<<endl;
+            cout<<endl;
         }
+         cout<<endl;
     }
 };

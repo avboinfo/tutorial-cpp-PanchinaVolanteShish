@@ -7,16 +7,18 @@
 #include <iostream>
 using namespace std;
 #include "Coda.cpp"
+#include "UfficioPostale"
 
 int main(){
-
-Coda c= Coda(1000);
-c.stampa();
-c.enter(100);
-c.enter(120);
-c.enter(85);
-c.exit();
-c.enter(235);
-c.stampa();
-
+UfficioPostale up = UfficioPostale("Saliceto")
+up.nuovoClinete('f')
+up.nuovoClinete('f')
+up.nuovoClinete('r')
+up.nuovoClinete('s')
+up.nuovoClinete('r')
+up.nuovoClinete('s')
+up.nuovoClinete('r')
+up.nuovoClinete('s')
+up.nuovoClinete('F')
+up.stampaTabellone
 }
