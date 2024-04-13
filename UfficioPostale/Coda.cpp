@@ -8,7 +8,8 @@
 using namespace std;
 #include <string>
 
-class   Coda{
+
+class Coda{
     private: // modificatori di visibilità, Information hiding(incapsulamento), una delle 3 caratteristiche principali delle classi 
     int len;
     int *v;
@@ -16,8 +17,8 @@ class   Coda{
     int stop;
     string nome;
     public:
-     Coda(int len,string name){
-        this->name=name
+    Coda(string nome,int len){
+        this->nome=nome;
         this->len= len;
         v = new int[len];
         start = stop = 0;
@@ -42,7 +43,7 @@ class   Coda{
         return val;
     }
     void stampa(){
-        cout<<"Elementi in coda "<< name <<": ";
+        cout<<"Elementi in coda "<< nome <<": ";
         for(int i=0; i<stop;i++){
             cout<<v[i]<<endl;
             cout<<endl;

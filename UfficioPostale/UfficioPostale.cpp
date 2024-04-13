@@ -9,62 +9,56 @@ using namespace std;
 #include <string>
 #include "Coda.cpp"
 class UfficioPostale{
-    private:
-    string nome;
-    Coda cR,cS,cF
-    int nR,nS,nF
     public:
-    UfficioPostale(string nome)    
-    {
-        codiceCliente=0;
-        this->nome=nome;
-        cR=Coda(Ricezione,1000);
-        cF=Coda(Spedizione,1000);
-        cS=Coda(Finanziari,1000);
-        nR=nS=nF=100;
-    }  
-    void presentazione(){
+    string nome;
 
-    }
+    Coda cR = Coda("Ricezione",1000);
+    Coda cF = Coda("Spedizione",1000);
+    Coda cS = Coda("Finanziari",1000);
+
+    int nR=1, nS=1, nF=1;
+    
+    UfficioPostale(string nome){
+        this-> nome=nome;
+    }  
     void nuovoCliente( char servizio ){
-        switch(servizio)
+        switch(servizio){
             case 'r':
                 cR.enter(nR++);
                 break;
             case 's':
-                cS.enter(ns++);
+                cS.enter(nS++);
                 break;
 
-            case 'f';
+            case 'f':
                 cF.enter(nF++);
                 break;
                 default:
                     cout<<"Questo servizio fattelo da solo!!!!!!"<<endl;
+        }
             
     }     
-    void chiamaCliente()
+    void chiamaCliente(char servizio)
     {
-            switch(servizio)
+            switch(servizio){
             case 'r':
-                return cR.exit(nR++);
+                cR.exit();
+                break;
             case 's':
-                return cS.exit(ns++);
-
-            case 'f';
-                return cF.exit(nF++);
+                cS.exit();
+                break;
+            case 'f':
+                cF.exit();
+                break;
                 default:
                     cout<<"Questo servizio non è previsto "<<endl;
+            }
     }
     void stampaTabellone(){
-        Cout<<"Tabellone dell'Ufficio postale"<<nome<<endl;
+        cout<<"Tabellone dell'Ufficio postale"<<nome<<endl;
         cR.stampa();
         cF.stampa();
         cS.stampa();
     }
 
 };
-
-int main{
-
-    return 0
-}

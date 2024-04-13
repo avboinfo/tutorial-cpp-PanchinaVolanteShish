@@ -6,19 +6,22 @@
 
 #include <iostream>
 using namespace std;
-#include "Coda.cpp"
-#include "UfficioPostale"
+#include "UfficioPostale.cpp"
 
 int main(){
-UfficioPostale up = UfficioPostale("Saliceto")
-up.nuovoClinete('f')
-up.nuovoClinete('f')
-up.nuovoClinete('r')
-up.nuovoClinete('s')
-up.nuovoClinete('r')
-up.nuovoClinete('s')
-up.nuovoClinete('r')
-up.nuovoClinete('s')
-up.nuovoClinete('F')
-up.stampaTabellone
+UfficioPostale up = UfficioPostale("Saliceto");
+up.nuovoCliente('f');
+up.nuovoCliente('f');
+up.nuovoCliente('r');
+up.nuovoCliente('s');
+up.nuovoCliente('r');
+up.nuovoCliente('s');
+up.nuovoCliente('r');
+up.nuovoCliente('s');
+up.nuovoCliente('F');
+up.chiamaCliente('f');
+up.chiamaCliente('r');
+up.chiamaCliente('r');
+up.chiamaCliente('s');
+up.stampaTabellone();
 }
