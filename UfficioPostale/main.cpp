@@ -10,7 +10,8 @@ using namespace std;
 
 int main(){
 UfficioPostale up = UfficioPostale("Saliceto");
-up.nuovoCliente('f');
+up.nuovoCliente('f'); 
+cout<<"In Finanze"<<endl;
 up.nuovoCliente('f');
 up.nuovoCliente('r');
 up.nuovoCliente('s');
@@ -19,8 +20,8 @@ up.nuovoCliente('s');
 up.nuovoCliente('r');
 up.nuovoCliente('s');
 up.nuovoCliente('F');
+up.stampaTabellone();
 up.chiamaCliente('f');
-up.chiamaCliente('r');
 up.chiamaCliente('r');
 up.chiamaCliente('s');
 up.stampaTabellone();
