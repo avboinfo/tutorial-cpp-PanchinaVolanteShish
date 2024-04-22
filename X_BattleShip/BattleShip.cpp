@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-#include "battleField.cpp"
+#include "BattleField.cpp"
 class BattleShip{
     private:
     BattleField mappa;
@@ -12,31 +12,38 @@ class BattleShip{
     BattleShip(){
     mappa= BattleField(VOID);
     campo=BattleField(VOID);
-    campo.placeHorizontalShip(3);
+
     campo.placeVerticalShip(4);
-    campo.placeVerticalShip(2);
+
     campo.placeHorizontalShip(5);
     }
     void play(){
-        for (int i=0; i<20; i++) {
-        int x = rand() % DIM;
-        int y = rand() % DIM;
-        if(campo.get(x,y)==HIT) continue;
-        if (campo.get(x,y)==SHIP) {mappa.put(x,y,HIT); campo.put(x,y,HIT);}
-        else mappa.put(x,y,MISS);
-    }
-        mappa.stampa();
-        ask();
-        mappa.stampa();
+        while (!gameOver()){
+            mappa.stampa();
+            if (!playHand());
+            break;
+        }
         campo.stampa();
     }
-    void ask(){
-        cout<<"Inserisci le coordinate di riga e colonna in cui sganciare la bomba";
-            int x,y;
-            cin>>x;
-            cin>>y;
+    bool playHand(){
+        cout<<"Inserisci le coordinate di riga e colonna(1 - "<<DIM<<" )in cui sganciare la bomba (0 per terminare)";
+            int x, y;
+            cin>>x; if(x<=0 || x>DIM) return false; else x--;
+            cin>>y; if(y<=0 || y>DIM) return false; else y--;
         if (campo.get(x,y)==SHIP) {mappa.put(x,y,HIT); campo.put(x,y,HIT);}
         else mappa.put(x,y,MISS);
+        return true;
+    
+    }
+    bool gameOver(){
+        for(int i=0;i<DIM;i++){
+            for(int j=0;j<DIM;i++){
+                if(mappa.get(i,j)=="X")
+                return false;
+                else
+                return true;
+            }
+        }
     }
 
 };

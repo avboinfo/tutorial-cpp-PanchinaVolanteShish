@@ -8,4 +8,5 @@ int main(){
     BattleShip gioco = BattleShip();
     gioco.play();
     cout<<"Game Over"<<endl;
+
 }

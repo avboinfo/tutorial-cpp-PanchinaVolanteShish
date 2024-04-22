@@ -6,16 +6,16 @@ using namespace std;
 #include <iostream>
 using namespace std;
 const char SHIP ='X';
-const int DIM = 10;
+const int DIM = 5;
 const char MISS = 'O';
 const char HIT= '*';
 const char VOID = '-';
 class BattleField {
 
-  private:
-    char m[DIM][DIM];
+    
 
   public:
+    char m[DIM][DIM];
     BattleField() {
         for (int i=0; i<DIM; i++)
             for (int j=0; j<DIM; j++)
