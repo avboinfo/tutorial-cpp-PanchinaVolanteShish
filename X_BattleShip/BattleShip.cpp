@@ -17,15 +17,7 @@ class BattleShip{
 
     campo.placeHorizontalShip(5);
     }
-    void play(){
-        while (!gameOver()){
-            mappa.stampa();
-            if (!playHand());
-            break;
-        }
-        campo.stampa();
-    }
-    bool playHand(){
+        bool playHand(){
         cout<<"Inserisci le coordinate di riga e colonna(1 - "<<DIM<<" )in cui sganciare la bomba (0 per terminare)";
             int x, y;
             cin>>x; if(x<=0 || x>DIM) return false; else x--;
@@ -35,10 +27,23 @@ class BattleShip{
         return true;
     
     }
+    void play(){
+        while (!gameOver()){
+            mappa.stampa();
+            if (!playHand)
+            {
+                break;
+            }
+            else
+            mappa.playHand();
+        }
+        campo.stampa();
+    }
+
     bool gameOver(){
         for(int i=0;i<DIM;i++){
             for(int j=0;j<DIM;i++){
-                if(mappa.get(i,j)=="X")
+                if(campo.get(i,j)=='X')
                 return false;
                 else
                 return true;
