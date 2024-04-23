@@ -1,54 +1,57 @@
-
-
-
+/*
+*Enrico Salvioli
+*BattleShip
+*/
 #include <iostream>
-using namespace std;
 #include "BattleField.cpp"
-class BattleShip{
+
+using namespace std;
+
+// DIM, SHIP, MISS, HIT, VOID
+
+class BattleShip {
+
     private:
+
     BattleField mappa;
     BattleField campo;
+
     public:
-    BattleShip(){
-    mappa= BattleField(VOID);
-    campo=BattleField(VOID);
-
-    campo.placeVerticalShip(4);
-
-    campo.placeHorizontalShip(5);
+    BattleShip() {
+        mappa = BattleField(VOID);
+        campo = BattleField(VOID);
+        campo.placeHorizontalShip(3);
+        campo.placeVerticalShip(4);
+        campo.placeVerticalShip(2);
+        campo.placeHorizontalShip(5);
     }
-        bool playHand(){
-        cout<<"Inserisci le coordinate di riga e colonna(1 - "<<DIM<<" )in cui sganciare la bomba (0 per terminare)";
-            int x, y;
-            cin>>x; if(x<=0 || x>DIM) return false; else x--;
-            cin>>y; if(y<=0 || y>DIM) return false; else y--;
-        if (campo.get(x,y)==SHIP) {mappa.put(x,y,HIT); campo.put(x,y,HIT);}
-        else mappa.put(x,y,MISS);
-        return true;
-    
-    }
-    void play(){
-        while (!gameOver()){
+
+    void play() {
+        while ( ! gameOver() ) {
             mappa.stampa();
-            if (!playHand)
-            {
-                break;
-            }
-            else
-            mappa.playHand();
+            if (!playHand()) break;
         }
         campo.stampa();
     }
 
-    bool gameOver(){
-        for(int i=0;i<DIM;i++){
-            for(int j=0;j<DIM;i++){
-                if(campo.get(i,j)=='X')
-                return false;
-                else
-                return true;
-            }
-        }
+    bool playHand() {
+        cout << "Inserisci le coordinate di riga e colonna (1 - " << DIM << ") in cui sganciare la bomba (0 per terminare): ";
+        int x, y;
+        cin >> x; if (x<=0 || x>DIM) return false; else x--;
+        cin >> y; if (y<=0 || y>DIM) return false; else y--;
+        if (campo.get(x,y)==SHIP) {
+            cout<<"Colpito"<<endl;
+            mappa.put(x,y,HIT);
+            campo.put(x,y,HIT);
+        } else{ mappa.put(x,y,MISS); cout<<"mancato, ritenta sarai più fortunato"}
+        return true;
+    }
+
+    bool gameOver() {
+        for (int i=0; i<DIM; i++) 
+          for (int j=0; j<DIM; j++)
+            if (campo.get(i,j)==SHIP) return false;
+        return true;
     }
 
 };

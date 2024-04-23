@@ -1,6 +1,6 @@
 /*
-** BattleField.cpp una classe definita da noi che spupazza le matrici come nessuno mai
-** Sandro Gallo - 15/04/2024
+** Battlefield.cpp
+** Enrico Salvioli
 */
 using namespace std;
 #include <iostream>
