@@ -43,7 +43,7 @@ class Coda{
         return val;
     }
     void stampa(){
-        cout<<"Elementi in coda "<< nome <<": ";
+        cout<<"Elementi in coda "<< nome <<": "<<endl;
         for(int i=0; i<stop;i++){
             cout<<v[i]<<endl;
             cout<<endl;

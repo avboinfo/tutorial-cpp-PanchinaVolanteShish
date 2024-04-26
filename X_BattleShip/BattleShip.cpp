@@ -43,7 +43,8 @@ class BattleShip {
             cout<<"Colpito"<<endl;
             mappa.put(x,y,HIT);
             campo.put(x,y,HIT);
-        } else{ mappa.put(x,y,MISS); cout<<"mancato, ritenta sarai più fortunato"}
+            
+        } else{ mappa.put(x,y,MISS); cout<<"mancato, ritenta sarai più fortunato"<<endl;}
         return true;
     }
 
