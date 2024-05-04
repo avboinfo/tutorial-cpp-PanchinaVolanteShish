@@ -1,39 +1,28 @@
 #include <stdio.h>
 #include <assert.h>
 
-int compra(int N, int M, int A, int B) {  // N è Corse da fare, M corse in 1 carne, A costo di 1 corsa, B costo del carnet
-    int x = N/M;
-    int v = A*N; // costo tot big singoli
-    int Z;
+int compra(int N, int M, int A, int B) {
+    int NCarnet = 0;
+    int NBiglietti= 0;
+    int totale, costo;
 
-    if (B<A){
-        if (N%M!=0)
-        {
-            x++;
-            Z=x*B;
-            return Z;
-        }else if (x!=0)
-        {
-            Z=x*B;
-            return Z;
-        }else{
-            return B;
+    NBiglietti = N;
+
+    while (N > 0) {
+        totale = N * A;
+        if (totale >= B) {
+            N -= M;
+            NCarnet++;
+        } else {
+            NBiglietti = N;
+            N = 0;
         }
     }
-    if (N%M==0){
-        int u = x*B;
-        if (v>u)
-        {
-            Z=x*B;
-            return Z;
-        }else{
-            return v;
-        }
-    }else{
-        
-    }
-    
+
+    costo = (NCarnet * B) + (NBiglietti * A);
+    return costo;
 }
+
 int main() {
     FILE *fr, *fw;
     int N, M, A, B;
